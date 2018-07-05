@@ -1,0 +1,27 @@
+{
+  "name": "googlemap_practice_react",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "server": "node index.js",
+    "client": "npm run start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\" \"npm run webhook\"",
+    "dev-server": "concurrently \"npm run server\" \"npm run webhook\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bhoomij/googlemap_practice_react.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bhoomij/googlemap_practice_react/issues"
+  },
+  "homepage": "https://github.com/bhoomij/googlemap_practice_react#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
