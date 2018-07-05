@@ -2,43 +2,39 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import {getMapData} from '../../actions';
+import { getMapData } from '../../actions';
 import GMap from './GMap';
 
 class GMapContainer extends Component {
 
-
 	componentDidMount() {
-		// this.props.getMapData(37.77425926306, -122.419485988398);
 		this.props.getMapData();
 	}
 
-  render() {
+	render() {
 
-		let { 
-			location:center = {
-				lat: 37.77425926306,
-				lng: -122.419485988398,
-			}, 
+		let {
+			location: center = {
+			lat: 37.77425926306,
+			lng: -122.419485988398,
+		},
 			data
 		} = this.props.trucksData;
 
-		// if(lat && lng) {
-		// 	center = {
-		// 		lat,
-		// 		lng
-		// 	};
+		// set center to data at index 1
+		// if (data && data.length > 1) {
+		// 	center.lat = parseFloat(data[1].latitude);
+		// 	center.lng = parseFloat(data[1].longitude);
 		// }
-		console.log('data', data);
-		
+
 		return (
-			<GMap center={center} data={data}/>
+			<GMap center={center} data={data} />
 		);
-  	}
+	}
 }
 
-function mapStateToProps({trucksData}) {
-    return {trucksData};
+function mapStateToProps({ trucksData }) {
+	return { trucksData };
 }
 
-export default connect(mapStateToProps, {getMapData})(GMapContainer);
+export default connect(mapStateToProps, { getMapData })(GMapContainer);

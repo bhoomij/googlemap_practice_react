@@ -2,35 +2,32 @@ import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
 import Place from './Place.js';
 
-import {GOOGLE_API_KEY} from '.././../common/const';
+import { GOOGLE_API_KEY } from '.././../common/const';
 
 class GMap extends Component {
     static defaultProps = {
         center: {
-        lat: 59.95,
-        lng: 30.33
+            lat: 59.95,
+            lng: 30.33
         },
-        zoom: 14.4  
+        zoom: 14.4
     };
 
     render() {
         let places = [];
-        if(this.props.data ) {
-            const arr = [this.props.data[590],this.props.data[599]]
-            console.log(arr)
-            
+        if (this.props.data) {
             places = this.props.data.map(place => {
-                const {latitude, longitude, address, objectid} = place;
-                return (<Place lat={latitude} lng={longitude} key={objectid} text={address} /> );
+                const { latitude, longitude, address, objectid } = place;
+                return (<Place lat={latitude} lng={longitude} key={objectid} text={address} />);
             });
         }
-   
+
         return (
             <div style={{ height: '100vh', width: '100%' }}>
                 <GoogleMapReact
-                bootstrapURLKeys={{ key: GOOGLE_API_KEY }}
-                center={this.props.center}
-                defaultZoom={this.props.zoom}
+                    bootstrapURLKeys={{ key: GOOGLE_API_KEY }}
+                    center={this.props.center}
+                    defaultZoom={this.props.zoom}
                 >
                     {places}
                 </GoogleMapReact>
